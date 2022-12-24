@@ -1,0 +1,41 @@
+<%- include("header") -%>
+
+
+  <div class="box" id="heading">
+    <h1> Do-List for <h2>
+        <%= Title %>
+      </h2>
+    </h1>
+  </div>
+
+  <div class="img-box">
+    <img src="images/sketch-3-todo-list-app-icon-template.png" alt="">
+  </div>
+
+  <div class="list">
+
+
+
+    <% Items.forEach(item=>{ %>
+      <form action="/delete" method="post">
+        <div class="box item">
+          <input name="checkbox" type="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
+          <p>
+            <%= item.name %>
+          </p>
+        </div>
+        <input type="hidden" name="listName" value="<%=Title %>"></input>
+      </form>
+      <% }) %>
+
+
+
+
+
+        <form class="item" action="/" method="post">
+          <input class="box" type="text" name="newItem" autofocus="on" placeholder="New Item" autocomplete="off">
+          <button type="submit" name="listButton" value="<%=Title %>">+</button>
+        </form>
+  </div>
+
+  <%- include("footer") -%>
